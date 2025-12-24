@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Давайте учиться!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Давайте учиться!</h1>
+            <p class="text-xl opacity-75">Математика - это просто и увлекательно!</p>
+        </header>
+
+        <!-- Math Sections -->
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Equations Section -->
+            <section class="bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i data-feather="hash" class="mr-2"></i> Уравнения
+                </h2>
+                <div id="equation-problem" class="text-xl mb-4"></div>
+                <input type="text" id="equation-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
+                <button onclick="checkEquation()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
+            </section>
+
+            <!-- Problems Section -->
+            <section class="bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i data-feather="help-circle" class="mr-2"></i> Задачи
+                </h2>
+                <div id="problem-text" class="text-lg mb-4"></div>
+                <input type="text" id="problem-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
+                <button onclick="checkProblem()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
+            </section>
+
+            <!-- Fractions Section -->
+            <section class="bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i data-feather="divide" class="mr-2"></i> Дроби
+                </h2>
+                <div id="fraction-problem" class="text-xl mb-4"></div>
+                <input type="text" id="fraction-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
+                <button onclick="checkFraction()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
+            </section>
+
+            <!-- Polynomials Section -->
+            <section class="bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i data-feather="function" class="mr-2"></i> Многочлены
+                </h2>
+                <div id="polynomial-problem" class="text-xl mb-4"></div>
+                <input type="text" id="polynomial-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
+                <button onclick="checkPolynomial()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
+            </section>
+
+            <!-- Geometry Section -->
+            <section class="bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i data-feather="triangle" class="mr-2"></i> Геометрия
+                </h2>
+                <div id="geometry-problem" class="text-lg mb-4"></div>
+                <input type="text" id="geometry-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
+                <button onclick="checkGeometry()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
+            </section>
+
+            <!-- History Section -->
+            <section class="bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i data-feather="book" class="mr-2"></i> История России
+                </h2>
+                <div id="history-question" class="text-lg mb-4"></div>
+                <input type="text" id="history-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
+                <button onclick="checkHistory()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
+            </section>
+        </div>
+
+        <!-- Profile Stats -->
+        <div class="mt-12 bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg">
+            <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                <i data-feather="user" class="mr-2"></i> Ваша статистика
+            </h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="text-center">
+                    <div class="text-4xl font-bold" id="correct-answers">0</div>
+                    <div class="opacity-75">Правильно</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold" id="wrong-answers">0</div>
+                    <div class="opacity-75">Ошибки</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold" id="average-score">0</div>
+                    <div class="opacity-75">Средний балл</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
