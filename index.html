@@ -80,24 +80,33 @@
                 <input type="text" id="geometry-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
                 <button onclick="checkGeometry()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
             </section>
-
-            <!-- History Section -->
+            <!-- Area Problems Section -->
             <section class="bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
                 <h2 class="text-2xl font-semibold mb-4 flex items-center">
-                    <i data-feather="book" class="mr-2"></i> История России
+                    <i data-feather="square" class="mr-2"></i> Площади
                 </h2>
-                <div id="history-question" class="text-lg mb-4"></div>
-                <input type="text" id="history-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
-                <button onclick="checkHistory()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
+                <div id="area-problem" class="text-lg mb-4"></div>
+                <input type="text" id="area-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
+                <button onclick="checkArea()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
             </section>
-        </div>
+
+            <!-- Volume Problems Section -->
+            <section class="bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i data-feather="box" class="mr-2"></i> Объемы
+                </h2>
+                <div id="volume-problem" class="text-lg mb-4"></div>
+                <input type="text" id="volume-answer" class="w-full bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg mb-4" placeholder="Ваш ответ...">
+                <button onclick="checkVolume()" class="w-full bg-primary hover:bg-opacity-80 text-white py-2 rounded-lg transition">Проверить</button>
+            </section>
+</div>
 
         <!-- Profile Stats -->
         <div class="mt-12 bg-black bg-opacity-30 backdrop-blur-lg rounded-xl p-6 shadow-lg">
             <h2 class="text-2xl font-semibold mb-4 flex items-center">
                 <i data-feather="user" class="mr-2"></i> Ваша статистика
             </h2>
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-3 gap-4 mb-4">
                 <div class="text-center">
                     <div class="text-4xl font-bold" id="correct-answers">0</div>
                     <div class="opacity-75">Правильно</div>
@@ -111,7 +120,10 @@
                     <div class="opacity-75">Средний балл</div>
                 </div>
             </div>
-        </div>
+            <button onclick="resetStats()" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition flex items-center justify-center">
+                <i data-feather="refresh-ccw" class="mr-2"></i> Сбросить статистику
+            </button>
+</div>
     </div>
 
     <script src="script.js"></script>
