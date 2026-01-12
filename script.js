@@ -4,10 +4,19 @@ let stats = {
     wrong: 0,
     total: 0
 };
+// Reset all stats
+function resetStats() {
+    stats = {
+        correct: 0,
+        wrong: 0,
+        total: 0
+    };
+    updateStats();
+}
 
 // Update stats display
 function updateStats() {
-    document.getElementById('correct-answers').textContent = stats.correct;
+document.getElementById('correct-answers').textContent = stats.correct;
     document.getElementById('wrong-answers').textContent = stats.wrong;
     document.getElementById('average-score').textContent = stats.total > 0 ? ((stats.correct / stats.total) * 100).toFixed(1) : '0';
 }
@@ -199,29 +208,28 @@ function checkGeometry() {
     generateGeometry();
     document.getElementById('geometry-answer').value = '';
 }
-
-// Generate history question
-function generateHistory() {
-    const questions = [
-        { question: "В каком году началась Великая Отечественная война?", answer: "1941" },
-        { question: "Кто был первым президентом России?", answer: "Ельцин" },
-        { question: "Как звали первого царя из династии Романовых?", answer: "Михаил" },
-        { question: "В каком году произошла Октябрьская революция?", answer: "1917" },
-        { question: "Как называлась первая русская летопись?", answer: "Повесть временных лет" }
+// Generate area problem
+function generateArea() {
+    const areas = [
+        { question: "Найдите площадь прямоугольника со сторонами 3 см и 4 см.", answer: "12" },
+        { question: "Найдите площадь квадрата со стороной 5 см.", answer: "25" },
+        { question: "Найдите площадь прямоугольника со сторонами 7 м и 8 м.", answer: "56" },
+        { question: "Найдите площадь квадрата со стороной 10 мм.", answer: "100" },
+        { question: "Найдите площадь прямоугольника со сторонами 12 см и 5 см.", answer: "60" }
     ];
     
-    const question = questions[Math.floor(Math.random() * questions.length)];
-    document.getElementById('history-question').textContent = question.question;
-    document.getElementById('history-answer').dataset.correct = question.answer.toLowerCase();
+    const area = areas[Math.floor(Math.random() * areas.length)];
+    document.getElementById('area-problem').textContent = area.question;
+    document.getElementById('area-answer').dataset.correct = area.answer;
 }
 
-// Check history answer
-function checkHistory() {
-    const answer = document.getElementById('history-answer').value.trim().toLowerCase();
-    const correctAnswer = document.getElementById('history-answer').dataset.correct;
+// Check area answer
+function checkArea() {
+    const answer = document.getElementById('area-answer').value.trim();
+    const correctAnswer = document.getElementById('area-answer').dataset.correct;
     
     stats.total++;
-    if (answer === correctAnswer) {
+    if (parseFloat(answer) === parseFloat(correctAnswer)) {
         stats.correct++;
         alert('Правильно! 👍');
     } else {
@@ -230,10 +238,43 @@ function checkHistory() {
     }
     
     updateStats();
-    generateHistory();
-    document.getElementById('history-answer').value = '';
+    generateArea();
+    document.getElementById('area-answer').value = '';
 }
 
+// Generate volume problem
+function generateVolume() {
+    const volumes = [
+        { question: "Найдите объем параллелепипеда со сторонами 4 мм, 6 мм и 7 мм.", answer: "168" },
+        { question: "Найдите объем куба с ребром 3 см.", answer: "27" },
+        { question: "Найдите объем параллелепипеда со сторонами 5 м, 2 м и 4 м.", answer: "40" },
+        { question: "Найдите объем куба с ребром 10 дм.", answer: "1000" },
+        { question: "Найдите объем параллелепипеда со сторонами 8 см, 3 см и 5 см.", answer: "120" }
+    ];
+    
+    const volume = volumes[Math.floor(Math.random() * volumes.length)];
+    document.getElementById('volume-problem').textContent = volume.question;
+    document.getElementById('volume-answer').dataset.correct = volume.answer;
+}
+
+// Check volume answer
+function checkVolume() {
+    const answer = document.getElementById('volume-answer').value.trim();
+    const correctAnswer = document.getElementById('volume-answer').dataset.correct;
+    
+    stats.total++;
+    if (parseFloat(answer) === parseFloat(correctAnswer)) {
+        stats.correct++;
+        alert('Правильно! 👍');
+    } else {
+        stats.wrong++;
+        alert(`Неправильно. Правильный ответ: ${correctAnswer}`);
+    }
+    
+    updateStats();
+    generateVolume();
+    document.getElementById('volume-answer').value = '';
+}
 // Initialize all problems when page loads
 window.onload = function() {
     generateEquation();
@@ -241,6 +282,7 @@ window.onload = function() {
     generateFraction();
     generatePolynomial();
     generateGeometry();
-    generateHistory();
-    updateStats();
+    generateArea();
+    generateVolume();
+updateStats();
 };
